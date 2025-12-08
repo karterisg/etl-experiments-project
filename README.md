@@ -5,7 +5,7 @@
 
 ---
 
-## Τι έκανα μέχρι τώρα!!!!!
+## Τι έκανα μέχρι τώρα
 
 1. Φτιάχτηκε ο φάκελος του project (`python_project/my-data-project`) και όλη η βασική δομή με φακέλους για data, scripts, notebooks και tests.  
 2. Έκανα virtual environment (`venv`) για να κρατάω όλες τις βιβλιοθήκες ξεχωριστά.  
@@ -23,13 +23,6 @@
 
 Έφτιαξα ένα μικρό CSV `data/raw_data.csv` με μερικές γραμμές για δοκιμή:
 
-name,age,salary
-Γιάννης,30,50000
-Άννα,,
-Μιχάλης,40,60000
-Σοφία,25,
-
-
 
 Με το ETL script, αυτό έγινε `clean_data.csv`, έτοιμο για ανάλυση.
 
@@ -38,7 +31,7 @@ name,age,salary
 ## Τι έκανα μετά
 
 1. Δημιούργησα ένα script ανάλυσης με Spark (`src/analysis/spark_analysis.py`).  
-2. Αυτό το script φορτώνει τα καθαρά δεδομένα σε Spark DataFrame και κάνει μερικές βασικές αναλύσεις, όπως:  
+2. Το script φορτώνει τα καθαρά δεδομένα σε Spark DataFrame και κάνει μερικές βασικές αναλύσεις:  
    - εμφάνιση των πρώτων γραμμών  
    - μέσος μισθός ανά όνομα  
    - συνολικός μέσος μισθός  
@@ -48,11 +41,21 @@ name,age,salary
 
 ## Πώς τρέχω το project
 
-1. Ενεργοποιώ το virtual environment (`venv`).  
-2. Τρέχω πρώτα το ETL script για να καθαρίσω τα δεδομένα:
+1. Ενεργοποιώ το virtual environment (`venv`):
 
 ```bash
+source venv/bin/activate  ##σε linux wsl ::::
+
+
+
+Τρέχω πρώτα το ETL script για να καθαρίσω τα δεδομένα:
+
 python src/etl/load_clean_data.py
 
 
+Μετά τρέχω το Spark analysis script για βασική ανάλυση:
 
+python src/analysis/spark_analysis.py
+
+
+Σημείωση: Για να δουλέψει το Spark script χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!!!
