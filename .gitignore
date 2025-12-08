@@ -1,0 +1,4 @@
+venv/
+__pycache__/
+*.pyc
+*.csv   # αν δεν θέλεις να ανεβάσεις raw/clean data
