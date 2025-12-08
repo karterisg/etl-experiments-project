@@ -1,17 +1,20 @@
 # My Data Project - υπό κατασκευή
 
-Αυτό είναι το πρώτο μου μεγάλο data science project και είναι ακόμα υπό εξέλιξη.   
-Εδώ δείχνω δουλεύω με Python, Pandas και PySpark για ETL, ανάλυση δεδομένων και προετοιμασία για ML.
+Αυτό είναι το πρώτο μου μεγάλο **data science project** και είναι ακόμα υπό εξέλιξη.  
+Εδώ δείχνω πώς δουλεύω με **Python, Pandas και PySpark** για ETL, ανάλυση δεδομένων και προετοιμασία για ML.
 
 ---
 
 ## Τι έκανα μέχρι τώρα
 
-1. Φτιάχτηκε ο φάκελος του project (`python_project/my-data-project`) και όλη η βασική δομή με φακέλους για data, scripts, notebooks και tests.  
-2. Έκανα virtual environment (`venv`) για να κρατάω όλες τις βιβλιοθήκες ξεχωριστά.  
-3. Κατέβασα και εγκατέστησα τις βασικές βιβλιοθήκες που χρειάζομαι:  
+1. Δημιουργήθηκε ο φάκελος του project (`python_project/my-data-project`) και η βασική δομή με φακέλους για **data**, **scripts**, **notebooks** και **tests**.  
+2. Έφτιαξα **virtual environment (`venv`)** για να κρατάω ξεχωριστά τις βιβλιοθήκες.  
+3. Εγκατέστησα τις βασικές βιβλιοθήκες:
+
    - `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `jupyter`, `pyspark`, `reportlab`  
-4. Έφτιαξα το πρώτο μου ETL script (`src/etl/load_clean_data.py`) που:  
+
+4. Έφτιαξα το πρώτο μου **ETL script** (`src/etl/load_clean_data.py`) που:
+
    - φορτώνει τα raw δεδομένα από CSV  
    - καθαρίζει κενά και περιττούς χαρακτήρες  
    - υπολογίζει μέσους όρους για τα κενά αριθμητικά πεδία  
@@ -19,9 +22,9 @@
 
 ---
 
-## Τα πρώτα δεδομένα που χρησιμοποίησα
+## Τα πρώτα δεδομένα
 
-Έφτιαξα ένα μικρό CSV `data/raw_data.csv` με μερικές γραμμές για δοκιμή:
+Το αρχικό CSV `data/raw_data.csv` για δοκιμή:
 
 name,age,salary
 Γιάννης,30,50000
@@ -31,20 +34,22 @@ name,age,salary
 
 
 
-Με το ETL script, αυτό έγινε `clean_data.csv`, έτοιμο για ανάλυση.
+Με το ETL script, δημιουργείται το `clean_data.csv`, έτοιμο για ανάλυση.
 
 ---
 
 ## Τι έκανα μετά
 
-1. Δημιούργησα ένα script ανάλυσης με Spark (`src/analysis/spark_analysis.py`).  
-2. Το script φορτώνει τα καθαρά δεδομένα σε Spark DataFrame και κάνει μερικές βασικές αναλύσεις:  
-   - εμφάνιση των πρώτων γραμμών  
-   - μέσος μισθός ανά όνομα  
-   - συνολικός μέσος μισθός  
-3. Δημιούργησα ένα πιο ολοκληρωμένο script (`src/analysis/spark_analysis_report.py`) που:  
+1. Δημιούργησα ένα **script ανάλυσης με Spark** (`src/analysis/spark_analysis.py`) που:
+
+   - φορτώνει τα καθαρά δεδομένα σε Spark DataFrame  
+   - εμφανίζει τις πρώτες γραμμές  
+   - υπολογίζει μέσο μισθό ανά όνομα και συνολικό μέσο μισθό  
+
+2. Δημιούργησα ένα πιο **πλήρες script** (`src/analysis/spark_analysis_report.py`) που:
+
    - τρέχει την ανάλυση με Spark  
-   - συλλέγει τα Spark jobs (Job ID, Status, αριθμό Stages)  
+   - συλλέγει τα Spark jobs (Job ID, Status, αριθμός Stages)  
    - σώζει τα jobs σε CSV (`data/spark_jobs.csv`)  
    - δημιουργεί PDF report (`data/spark_jobs_report.pdf`) με τις ίδιες πληροφορίες  
 
@@ -57,25 +62,31 @@ name,age,salary
 ```bash
 source venv/bin/activate  # Linux / WSL
 
-
-
-Τρέχω πρώτα το ETL script για να καθαρίσω τα δεδομένα:
+1.Τρέχω το ETL script για να καθαρίσω τα δεδομένα:
 
 python src/etl/load_clean_data.py
 
 
-Μετά τρέχω το Spark analysis script για βασική ανάλυση:
-
-python src/analysis/spark_analysis.py
 
 
-Τέλος τρέχω το Spark analysis report script για CSV + PDF:
+2.Τρέχω το Spark analysis report script για CSV + PDF:
 
 python src/analysis/spark_analysis_report.py
 
 
-Σημείωση: Για να δουλέψει το Spark χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!
+Σημείωση: Για να δουλέψει το Spark χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!!!!!
+
+Όλα τα παραγόμενα αρχεία (clean_data.csv, spark_jobs.csv, spark_jobs_report.pdf) αποθηκεύονται μέσα στο φάκελο data/.
+
+---------------------------------------
+Tests για τον κώδικα του cleaning
 
 
+Πώς τρέχω τα tests:
 
-Όλα τα παραγόμενα αρχεία (clean_data.csv, spark_jobs.csv, spark_jobs_report.pdf) σώζονται μέσα στο φάκελο data/.
+Με Python built-in unittest:
+
+python tests/test_etl.py
+
+
+Έτσι βεβαιώνεσαι ότι το ETL module λειτουργεί σωστά και καθαρίζει τα δεδομένα όπως πρέπει.
