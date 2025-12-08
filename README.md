@@ -10,7 +10,7 @@
 1. Φτιάχτηκε ο φάκελος του project (`python_project/my-data-project`) και όλη η βασική δομή με φακέλους για data, scripts, notebooks και tests.  
 2. Έκανα virtual environment (`venv`) για να κρατάω όλες τις βιβλιοθήκες ξεχωριστά.  
 3. Κατέβασα και εγκατέστησα τις βασικές βιβλιοθήκες που χρειάζομαι:  
-   - `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `jupyter`, `pyspark`  
+   - `numpy`, `pandas`, `matplotlib`, `scikit-learn`, `jupyter`, `pyspark`, `reportlab`  
 4. Έφτιαξα το πρώτο μου ETL script (`src/etl/load_clean_data.py`) που:  
    - φορτώνει τα raw δεδομένα από CSV  
    - καθαρίζει κενά και περιττούς χαρακτήρες  
@@ -22,6 +22,13 @@
 ## Τα πρώτα δεδομένα που χρησιμοποίησα
 
 Έφτιαξα ένα μικρό CSV `data/raw_data.csv` με μερικές γραμμές για δοκιμή:
+
+name,age,salary
+Γιάννης,30,50000
+Άννα,,
+Μιχάλης,40,60000
+Σοφία,25,
+
 
 
 Με το ETL script, αυτό έγινε `clean_data.csv`, έτοιμο για ανάλυση.
@@ -35,7 +42,11 @@
    - εμφάνιση των πρώτων γραμμών  
    - μέσος μισθός ανά όνομα  
    - συνολικός μέσος μισθός  
-3. Δοκίμασα να τρέξω το script, αλλά βγήκε σφάλμα επειδή το PySpark χρειάζεται Java. Οπότε τώρα πρέπει να εγκατασταθεί το JDK και να οριστεί το `JAVA_HOME`.
+3. Δημιούργησα ένα πιο ολοκληρωμένο script (`src/analysis/spark_analysis_report.py`) που:  
+   - τρέχει την ανάλυση με Spark  
+   - συλλέγει τα Spark jobs (Job ID, Status, αριθμό Stages)  
+   - σώζει τα jobs σε CSV (`data/spark_jobs.csv`)  
+   - δημιουργεί PDF report (`data/spark_jobs_report.pdf`) με τις ίδιες πληροφορίες  
 
 ---
 
@@ -44,7 +55,7 @@
 1. Ενεργοποιώ το virtual environment (`venv`):
 
 ```bash
-source venv/bin/activate  ##σε linux wsl ::::
+source venv/bin/activate  # Linux / WSL
 
 
 
@@ -58,4 +69,13 @@ python src/etl/load_clean_data.py
 python src/analysis/spark_analysis.py
 
 
-Σημείωση: Για να δουλέψει το Spark script χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!!!
+Τέλος τρέχω το Spark analysis report script για CSV + PDF:
+
+python src/analysis/spark_analysis_report.py
+
+
+Σημείωση: Για να δουλέψει το Spark χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!
+
+
+
+Όλα τα παραγόμενα αρχεία (clean_data.csv, spark_jobs.csv, spark_jobs_report.pdf) σώζονται μέσα στο φάκελο data/.
