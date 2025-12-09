@@ -95,6 +95,7 @@ python tests/test_etl.py
 
 ## Notebooks
 
+
 Στον φάκελο `notebooks/` κρατάω όλα τα Jupyter notebooks για ανάλυση δεδομένων και πειράματα.  
 Κάθε notebook περιέχει **code cells** για Python κώδικα και **Markdown cells** για τίτλους, περιγραφές και σημειώσεις.  
 Αυτό επιτρέπει να βλέπω άμεσα αποτελέσματα, plots και outputs χωρίς να τρέχω ξεχωριστά scripts.
