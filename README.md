@@ -62,29 +62,28 @@ name,age,salary
 ```bash
 source venv/bin/activate  # Linux / WSL
 
-1.Τρέχω το ETL script για να καθαρίσω τα δεδομένα:
+
+Τρέχω το ETL script για να καθαρίσω τα δεδομένα:
 
 python src/etl/load_clean_data.py
 
-
-
-
-2.Τρέχω το Spark analysis report script για CSV + PDF:
+--------------------------------
+Τρέχω το Spark analysis report script για CSV + PDF:
 
 python src/analysis/spark_analysis_report.py
 
 
-Σημείωση: Για να δουλέψει το Spark χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!!!!!
+--------------------------------
+
+Σημείωση: Για να δουλέψει το Spark χρειάζεται εγκατεστημένο JDK και σωστά ορισμένο JAVA_HOME!!!!!!!!!!!!!
 
 Όλα τα παραγόμενα αρχεία (clean_data.csv, spark_jobs.csv, spark_jobs_report.pdf) αποθηκεύονται μέσα στο φάκελο data/.
 
----------------------------------------
+
+
 Tests για τον κώδικα του cleaning
 
-
 Πώς τρέχω τα tests:
-
-Με Python built-in unittest:
 
 python tests/test_etl.py
 
@@ -93,21 +92,14 @@ python tests/test_etl.py
 
 
 
-## Notebooks
+Notebooks
 
-
-Στον φάκελο `notebooks/` κρατάω όλα τα Jupyter notebooks για ανάλυση δεδομένων και πειράματα.  
-Κάθε notebook περιέχει **code cells** για Python κώδικα και **Markdown cells** για τίτλους, περιγραφές και σημειώσεις.  
+Στον φάκελο notebooks/ κρατάω όλα τα Jupyter notebooks για ανάλυση δεδομένων και πειράματα.
+Κάθε notebook περιέχει code cells για Python κώδικα και Markdown cells για τίτλους, περιγραφές και σημειώσεις.
 Αυτό επιτρέπει να βλέπω άμεσα αποτελέσματα, plots και outputs χωρίς να τρέχω ξεχωριστά scripts.
 
-### Εξαρτήσεις για τα notebooks
+Εξαρτήσεις για τα notebooks
 
-Για να τρέξουν σωστά, χρειάζεται να εγκατασταθούν οι παρακάτω βιβλιοθήκες στο virtual environment (`venv`):
+Για να τρέξουν σωστά, χρειάζεται να εγκατασταθούν οι παρακάτω βιβλιοθήκες στο virtual environment (venv):
 
-```bash
-pip install pandas matplotlib seaborn::::::
-
-REQUIRMENTS:::::
-pandas για φόρτωση και επεξεργασία δεδομένων
-
-matplotlib και seaborn για plots και visualization
+pip install pandas matplotlib seaborn
