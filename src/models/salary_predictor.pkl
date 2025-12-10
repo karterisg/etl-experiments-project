@@ -1,0 +1,10 @@
+import joblib
+import os
+
+
+os.makedirs("models", exist_ok=True)
+
+
+model_path = "models/salary_predictor.pkl"
+joblib.dump(model, model_path)
+print(f"Model saved to {model_path}")

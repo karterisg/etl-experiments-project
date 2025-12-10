@@ -1,4 +1,5 @@
-# My Data Project - υπό κατασκευή
+# My Data Project - υπό κατασκευή - Πρόβλεψη Μισθού με Python, Spark και Machine Learning
+
 
 Αυτό είναι το πρώτο μου μεγάλο **data science project** και είναι ακόμα υπό εξέλιξη.  
 Εδώ δείχνω πώς δουλεύω με **Python, Pandas και PySpark** για ETL, ανάλυση δεδομένων και προετοιμασία για ML.

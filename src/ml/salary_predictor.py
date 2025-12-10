@@ -4,6 +4,11 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
 
+# γαια τη παραγωγή του models/pkl file
+import joblib
+import os       
+
+
 df = pd.read_csv("data/clean_data.csv")
 
 X = df [['age']]
