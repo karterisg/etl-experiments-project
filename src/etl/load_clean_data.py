@@ -2,6 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 
+RAW_PATH = "data/web_data.csv"   # νέο dataset
+CLEAN_PATH = "data/clean_data.csv"
+
 def load_data(file_path: str) -> pd.DataFrame:
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
@@ -24,9 +27,6 @@ def save_clean_data(df: pd.DataFrame, out_path: str):
     print(f"Saved cleaned data: {out_path}")
 
 if __name__ == "__main__":
-    RAW_PATH = "data/raw_data.csv"
-    CLEAN_PATH = "data/clean_data.csv"
-
     df = load_data(RAW_PATH)
     df = clean_data(df)
     save_clean_data(df, CLEAN_PATH)

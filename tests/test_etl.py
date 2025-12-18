@@ -11,19 +11,20 @@ from src.etl.load_clean_data import clean_data  # τώρα θα δουλέψει
 
 class TestETL(unittest.TestCase):
     def test_clean_data(self):
-        # Δημιουργία μικρού test DataFrame
+        # Δημιουργία μικρού test DataFrame με τα νέα ονόματα στηλών
         df = pd.DataFrame({
-            "name": ["Γιάννης", "Άννα"],
-            "age": [30, None],
-            "salary": [50000, None]
+            "First Name": ["Jose", "Diane"],
+            "Last Name": ["Lopez", "Carter"],
+            "Age": [25, None],
+            "Salary": [8500, None]
         })
 
         # Τρέξε τη συνάρτηση clean_data
         cleaned_df = clean_data(df)
 
-        # Έλεγχος ότι δεν υπάρχουν κενά
-        self.assertEqual(cleaned_df["age"].isnull().sum(), 0)
-        self.assertEqual(cleaned_df["salary"].isnull().sum(), 0)
+        # Έλεγχος ότι δεν υπάρχουν κενά στις στήλες Age και Salary
+        self.assertEqual(cleaned_df["Age"].isnull().sum(), 0)
+        self.assertEqual(cleaned_df["Salary"].isnull().sum(), 0)
 
 if __name__ == "__main__":
     unittest.main()

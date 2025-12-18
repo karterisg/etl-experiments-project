@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import avg, col
+from pyspark.sql.functions import concat_ws, avg, col
 import pandas as pd
 from reportlab.pdfgen import canvas
 import os
@@ -8,19 +8,24 @@ import os
 spark = SparkSession.builder.appName("MyDataProject").getOrCreate()
 sc = spark.sparkContext
 
-# Φόρτωση καθαρισμένων δεδομένων
-data_csv = "data/clean_data.csv"
+# Φόρτωση νέου dataset
+data_csv = "data/web_data.csv" 
 df = spark.read.csv(data_csv, header=True, inferSchema=True)
 
-# Τρέχον analysis
+# Δημιουργία πλήρους ονόματος από First Name + Last Name
+df = df.withColumn("Full Name", concat_ws(" ", col("First Name"), col("Last Name")))
+
+# Τρέχουσα ανάλυση
 print("Πρώτες γραμμές του DataFrame:")
-df.show()
+df.show(5)
 
-print("Μέσος μισθός ανά όνομα:")
-df.groupBy("name").agg(avg("salary").alias("avg_salary")).show()
+# Μέσος μισθός ανά άτομο
+print("Μέσος μισθός ανά άτομο:")
+df.groupBy("Full Name").agg(avg("Salary").alias("avg_salary")).show()
 
+# Συνολικός μέσος μισθός
 print("Μέσος μισθός για όλο το dataset:")
-df.select(avg(col("salary")).alias("overall_avg_salary")).show()
+df.select(avg(col("Salary")).alias("overall_avg_salary")).show()
 
 # Λήψη πληροφοριών για Spark jobs
 tracker = sc.statusTracker()
@@ -32,8 +37,8 @@ for jobId in jobs:
     if job_info:
         jobs_data.append({
             "jobId": jobId,
-            "status": job_info.status,             # τρέχον status
-            "numStages": len(job_info.stageIds)    # πόσα stages έχει το job
+            "status": job_info.status,             
+            "numStages": len(job_info.stageIds)
         })
 
 # Δημιουργία φακέλου data αν δεν υπάρχει
