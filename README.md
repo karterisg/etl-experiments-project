@@ -44,7 +44,7 @@ name,age,salary
 
 - Νέο CSV: `data/web_data.csv`  
 - Στήλες: First Name, Last Name, Email, Phone, Gender, Age, Job Title, Years Of Experience, Salary, Department  
-- Link για το CSV: Download web_data.csv (βάλε εδώ το πραγματικό link που χρησιμοποίησες)
+- Link για το CSV: Download web_data.csv (https://api.slingacademy.com/v1/sample-data/files/employees.cs)
 
 Το `clean_data.csv` δημιουργείται πλέον από αυτό το μεγάλο dataset.
 
