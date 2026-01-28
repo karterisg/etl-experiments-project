@@ -7,7 +7,7 @@ import os
 
 df = pd.read_csv("data/clean_data.csv")
 
-# Στήλες που μας ενδιαφέρουν
+
 X = df[['Age']]
 y = df['Salary']
 
@@ -28,7 +28,7 @@ print("True values:", list(y_test))
 print("Coefficient (slope):", model.coef_)
 print("Intercept:", model.intercept_)
 
-# Αποθήκευση μοντέλου
+
 os.makedirs("models", exist_ok=True)
 joblib.dump(model, "models/salary_model.pkl")
 print("Model saved as models/salary_model.pkl")

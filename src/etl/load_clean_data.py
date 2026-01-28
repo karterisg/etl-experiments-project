@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 
-RAW_PATH = "data/web_data.csv"   # νέο dataset
+RAW_PATH = "data/web_data.csv"   #dataset
 CLEAN_PATH = "data/clean_data.csv"
 
 def load_data(file_path: str) -> pd.DataFrame:
